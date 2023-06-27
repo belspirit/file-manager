@@ -27,18 +27,6 @@ const start = () => {
 
   whereIam();
 
-  // workarround for the Windows CTRL+C hotkey
-  if (process.platform === "win32") {
-    var rl = createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-
-    rl.on("SIGINT", function () {
-      process.emit("SIGINT");
-    });
-  }
-
   process.on("SIGINT", function () {
     //graceful shutdown
     exit();
